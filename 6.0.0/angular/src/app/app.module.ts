@@ -47,6 +47,7 @@ import {EditFoodDialogComponent} from './food-items/edit-food/edit-food-dialog.c
 
 import { PurchaseFoodComponent } from './purchase-food/purchase-food.component';
 import {ViewCartDialogComponent} from './purchase-food/view-cart/view-cart-dialog.component';
+import { OrdersListComponent } from './orders-list/orders-list.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import {ViewCartDialogComponent} from './purchase-food/view-cart/view-cart-dialo
     EditFoodDialogComponent,
     
     PurchaseFoodComponent,
-    ViewCartDialogComponent
+    ViewCartDialogComponent,
+    OrdersListComponent
     
    
    

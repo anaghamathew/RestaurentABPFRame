@@ -140,5 +140,21 @@ namespace RestaurentProject.PurchaseOrders
             }
         }
 
+        public PagedResultDto<PurchaseOrderDto> GetOrderList(int SkipCount, int MaxResultCount)
+        {
+            var foodQuery = _purchaseOrderRepository
+                .GetAllIncluding(f => f.PurchasedFood)
+                .Where(p => p.Status == "Purchased");
+
+            var pagedResult = foodQuery.OrderBy(p => p.Id)
+             .Skip(SkipCount)
+             .Take(MaxResultCount)
+
+             .ToList();
+            var totalcount = foodQuery.Count();
+            var foodmapped = ObjectMapper.Map<List<PurchaseOrderDto>>(pagedResult);
+            return new PagedResultDto<PurchaseOrderDto>(totalcount, foodmapped);
+        }
+
     }
 }

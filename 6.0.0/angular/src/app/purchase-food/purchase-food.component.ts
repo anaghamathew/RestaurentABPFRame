@@ -34,7 +34,7 @@ export class PurchaseFoodComponent extends AppComponentBase implements OnInit {
   ngOnInit(): void {
     this._categoryService.getCategorywithFoods().subscribe((result: CategoryWithDto[]) => {
       this.products = result;
-      console.log("products", this.products);
+      
       
     });
   }
@@ -42,7 +42,7 @@ export class PurchaseFoodComponent extends AppComponentBase implements OnInit {
   addToCart(foodId: number): void {
     console.log("foodId",foodId);
     this.addCartInput.foodId=foodId;
-    this.addCartInput.customer="anagha";
+    this.addCartInput.customer="customer1";
      this._purchaseOrderServiceProxy.addToCart(this.addCartInput).subscribe(() => {
       this.notify.info(this.l('Added To Cart Successfully'));
      

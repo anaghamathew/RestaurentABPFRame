@@ -11,6 +11,7 @@ import { ChangePasswordComponent } from './users/change-password/change-password
 import { FoodCategoriesComponent } from './food-categories/food-categories.component';
 import { FoodItemsComponent } from './food-items/food-items.component';
 import {PurchaseFoodComponent} from './purchase-food/purchase-food.component';
+import {OrdersListComponent} from './orders-list/orders-list.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -26,6 +27,8 @@ import {PurchaseFoodComponent} from './purchase-food/purchase-food.component';
                     { path: 'update-password', component: ChangePasswordComponent },
                      { path: 'food-categories', component: FoodCategoriesComponent,data:{permission:'Pages.Owners'}, canActivate: [AppRouteGuard]},
                      {path:'food-items',component:FoodItemsComponent,data:{permission:'Pages.Owners'}, canActivate: [AppRouteGuard]},
+                     {path:'orders-list',component:OrdersListComponent,data:{permission:'Pages.Owners'}, canActivate: [AppRouteGuard]},
+                    
                      { path: 'purchase-food', component:PurchaseFoodComponent,data:{permission:'Pages.Customers'}, canActivate: [AppRouteGuard]}
                     // {path:'categories-list',
                     //     children :[

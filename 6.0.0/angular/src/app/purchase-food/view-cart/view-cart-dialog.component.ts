@@ -41,7 +41,7 @@ import {
     }
   
     GetCart():void{
-        this.customer="anagha";
+        this.customer="customer1";
         this._purchaseOrderServiceProxy.viewCart(this.customer).subscribe((result: PurchaseOrderDtoListResultDto) => {
           this.cartItems = result.items;
           console.log("cartitems", this.cartItems);
@@ -80,7 +80,7 @@ import {
     }
 
     GetTotalPrice():void{
-        this.customer="anagha";
+        this.customer="customer1";
         this._purchaseOrderServiceProxy.getTotalPrice(this.customer).subscribe((result: number) => {
             this.totalPrice = result;
            
