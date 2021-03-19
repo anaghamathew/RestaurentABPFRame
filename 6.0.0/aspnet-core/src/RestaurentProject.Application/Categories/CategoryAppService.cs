@@ -14,6 +14,7 @@ namespace RestaurentProject.Categories
     {
 
         private readonly IRepository<Category> _categoryRepository;
+       
         public CategoryAppService(IRepository<Category> repository)
        : base(repository)
         {
@@ -29,6 +30,16 @@ namespace RestaurentProject.Categories
             var categoryDto = ObjectMapper.Map<List< CategoryDto > >(categories);
 
             return new ListResultDto<CategoryDto>(categoryDto);
+        }
+
+
+        public List<CategoryWithDto> GetCategorywithFoods()
+        {
+          var categories=  _categoryRepository.GetAllIncluding(
+                c => c.Food).ToList();
+            var categoriesDto = ObjectMapper.Map<List<CategoryWithDto>>(categories);
+           
+            return categoriesDto;
         }
         /* private readonly IRepository<Category> _categoryRepository;
 

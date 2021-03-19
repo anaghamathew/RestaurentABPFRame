@@ -63,67 +63,77 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
         'Pages.Roles'
       ),
       new MenuItem(
-        this.l('FoodCategories'),
+        this.l('Food Categories'),
         '/app/food-categories',
-        'fas fa-theater-masks'
+        'fas fa-theater-masks',
+        'Pages.Owners'
       ),
       new MenuItem(
-        this.l('FoodItems'),
+        this.l('Food Items'),
         '/app/food-items',
-        'fas fa-theater-masks'
+        'fas fa-theater-masks',
+        'Pages.Owners'
       ),
-      new MenuItem(this.l('About'), '/app/about', 'fas fa-info-circle'),
-      new MenuItem(this.l('MultiLevelMenu'), '', 'fas fa-circle', '', [
-        new MenuItem('ASP.NET Boilerplate', '', 'fas fa-dot-circle', '', [
-          new MenuItem(
-            'Home',
-            'https://aspnetboilerplate.com?ref=abptmpl',
-            'far fa-circle'
-          ),
-          new MenuItem(
-            'Templates',
-            'https://aspnetboilerplate.com/Templates?ref=abptmpl',
-            'far fa-circle'
-          ),
-          new MenuItem(
-            'Samples',
-            'https://aspnetboilerplate.com/Samples?ref=abptmpl',
-            'far fa-circle'
-          ),
-          new MenuItem(
-            'Documents',
-            'https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl',
-            'far fa-circle'
-          ),
-        ]),
-        new MenuItem('ASP.NET Zero', '', 'fas fa-dot-circle', '', [
-          new MenuItem(
-            'Home',
-            'https://aspnetzero.com?ref=abptmpl',
-            'far fa-circle'
-          ),
-          new MenuItem(
-            'Features',
-            'https://aspnetzero.com/Features?ref=abptmpl',
-            'far fa-circle'
-          ),
-          new MenuItem(
-            'Pricing',
-            'https://aspnetzero.com/Pricing?ref=abptmpl#pricing',
-            'far fa-circle'
-          ),
-          new MenuItem(
-            'Faq',
-            'https://aspnetzero.com/Faq?ref=abptmpl',
-            'far fa-circle'
-          ),
-          new MenuItem(
-            'Documents',
-            'https://aspnetzero.com/Documents?ref=abptmpl',
-            'far fa-circle'
-          )
-        ])
-      ])
+      new MenuItem(
+        this.l('Purchase Food'),
+        '/app/purchase-food',
+        'fas fa-theater-masks',
+        'Pages.Owners'
+      ),
+      new MenuItem(this.l('About'), '/app/about', 'fas fa-info-circle')
+      // ,
+      // new MenuItem(this.l('MultiLevelMenu'), '', 'fas fa-circle', '', [
+      //   new MenuItem('ASP.NET Boilerplate', '', 'fas fa-dot-circle', '', [
+      //     new MenuItem(
+      //       'Home',
+      //       'https://aspnetboilerplate.com?ref=abptmpl',
+      //       'far fa-circle'
+      //     ),
+      //     new MenuItem(
+      //       'Templates',
+      //       'https://aspnetboilerplate.com/Templates?ref=abptmpl',
+      //       'far fa-circle'
+      //     ),
+      //     new MenuItem(
+      //       'Samples',
+      //       'https://aspnetboilerplate.com/Samples?ref=abptmpl',
+      //       'far fa-circle'
+      //     ),
+      //     new MenuItem(
+      //       'Documents',
+      //       'https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl',
+      //       'far fa-circle'
+      //     ),
+      //   ])
+      //   // ,
+      //   // new MenuItem('ASP.NET Zero', '', 'fas fa-dot-circle', '', [
+      //   //   new MenuItem(
+      //   //     'Home',
+      //   //     'https://aspnetzero.com?ref=abptmpl',
+      //   //     'far fa-circle'
+      //   //   ),
+      //   //   new MenuItem(
+      //   //     'Features',
+      //   //     'https://aspnetzero.com/Features?ref=abptmpl',
+      //   //     'far fa-circle'
+      //   //   ),
+      //   //   new MenuItem(
+      //   //     'Pricing',
+      //   //     'https://aspnetzero.com/Pricing?ref=abptmpl#pricing',
+      //   //     'far fa-circle'
+      //   //   ),
+      //   //   new MenuItem(
+      //   //     'Faq',
+      //   //     'https://aspnetzero.com/Faq?ref=abptmpl',
+      //   //     'far fa-circle'
+      //   //   ),
+      //   //   new MenuItem(
+      //   //     'Documents',
+      //   //     'https://aspnetzero.com/Documents?ref=abptmpl',
+      //   //     'far fa-circle'
+      //   //   )
+      //   // ])
+      // ])
     ];
   }
 

@@ -5,6 +5,7 @@ using RestaurentProject.Authorization.Users;
 using RestaurentProject.MultiTenancy;
 using RestaurentProject.Categories;
 using RestaurentProject.Foods;
+using RestaurentProject.PurchaseOrders;
 
 namespace RestaurentProject.EntityFrameworkCore
 {
@@ -12,6 +13,8 @@ namespace RestaurentProject.EntityFrameworkCore
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Food> Foods { get; set; }
+
+        public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         /* Define a DbSet for each entity of the application */
 
         public RestaurentProjectDbContext(DbContextOptions<RestaurentProjectDbContext> options)

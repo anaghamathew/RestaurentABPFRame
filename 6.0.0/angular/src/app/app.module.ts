@@ -43,7 +43,9 @@ import { CreateCategoryDialogComponent } from './food-categories/create-category
 import {EditCategoryDialogComponent} from './food-categories/edit-category/edit-category-dialog.component';
 import { FoodItemsComponent } from './food-items/food-items.component';
 import {CreateFoodDialogComponent} from './food-items/create-food/create-food-dialog.component';
+import {EditFoodDialogComponent} from './food-items/edit-food/edit-food-dialog.component';
 
+import { PurchaseFoodComponent } from './purchase-food/purchase-food.component';
 
 
 
@@ -81,7 +83,10 @@ import {CreateFoodDialogComponent} from './food-items/create-food/create-food-di
     CreateCategoryDialogComponent,
     EditCategoryDialogComponent,
     FoodItemsComponent,
-    CreateFoodDialogComponent
+    CreateFoodDialogComponent,
+    EditFoodDialogComponent,
+    
+    PurchaseFoodComponent
     
    
    
@@ -118,7 +123,8 @@ import {CreateFoodDialogComponent} from './food-items/create-food/create-food-di
     ResetPasswordDialogComponent,
     CreateCategoryDialogComponent,
     EditCategoryDialogComponent,
-    CreateFoodDialogComponent
+    CreateFoodDialogComponent,
+    EditFoodDialogComponent
   ],
 })
 export class AppModule {}

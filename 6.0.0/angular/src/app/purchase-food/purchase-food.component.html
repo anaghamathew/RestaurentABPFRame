@@ -1,0 +1,56 @@
+<div [@routerTransition]>
+    <section class="content-header" *ngFor="
+    let product of products">
+      <div class="container-fluid">
+        <div class="row">
+            <h4>{{product.name}}</h4>
+            <div class="card " *ngFor="
+let food of product.foods" style="width: 300px;float:left;height:200px;margin:20px;">
+    <div class="card-body" style="width: 100%;" >
+      <h4 class="card-title">{{food.name}}</h4>
+      <p class="card-text">{{food.description}}</p>
+      <p class="card-text">{{food.price}} Rs.</p>
+      <a href="javascript:;" class="btn bg-blue" (click)="addToCart(food.id)">
+        <i class="fa fa-plus-square"></i>
+        {{ "Add to Cart" | localize }}
+      </a>
+     
+    </div>
+  </div>
+
+
+        </div>
+      </div>
+    </section>
+</div>
+
+<!-- <div class="container">
+<div  *ngFor="
+let product of products" style="display: block;">
+<h4>{{product.name}}</h4>
+<div class="card " *ngFor="
+let food of product.foods" style="width: 300px;float:left;height:200px;margin:20px;">
+    <div class="card-body" style="width: 100%;" >
+      <h4 class="card-title">{{food.name}}</h4>
+      <p class="card-text">{{food.description}}</p>
+      <p class="card-text">{{food.price}} Rs.</p>
+      <a href="#" class="card-link">Add To Cart</a>
+     
+    </div>
+  </div>
+</div>
+</div> -->
+
+
+
+<!-- <div *ngFor="
+let product of products">
+productID{{product.id}},
+productname{{product.name}},
+Foods{{products.foods}}
+<div *ngFor="
+let food of product.foods">
+{{food.id}}
+{{food.name}}
+</div>
+</div> -->

@@ -14,5 +14,11 @@ namespace RestaurentProject.Foods
         PagedResultDto<FoodListDto> GetFoodItems(FoodInputDto input);
         FoodListDto CreateFood(CreateFoodInputDto createInput);
 
+       FoodListDto GetFood(int id);
+
+        FoodListDto UpdateFood(CreateFoodInputDto createInput);
+
+        Task DeleteAsync(int? id);
+
     }
 }

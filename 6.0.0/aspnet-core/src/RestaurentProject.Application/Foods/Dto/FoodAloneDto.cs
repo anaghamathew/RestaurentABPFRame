@@ -1,5 +1,4 @@
-﻿using Abp.Application.Services.Dto;
-using Abp.AutoMapper;
+﻿using Abp.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +7,19 @@ using System.Threading.Tasks;
 
 namespace RestaurentProject.Foods.Dto
 {
-    [AutoMap(typeof(Food))]
-    public class FoodListDto : FullAuditedEntityDto
+   /* [AutoMapFrom(typeof(Food))]*/
+    public  class FoodAloneDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-
-        public string CategoryName { get; set; }
-
 
         public decimal Price { get; set; }
 
         public short Quantity { get; set; }
 
-        public virtual int CategoryId{ get; set; }
+        public string Description { get; set; }
+
+
 
     }
-   
 }

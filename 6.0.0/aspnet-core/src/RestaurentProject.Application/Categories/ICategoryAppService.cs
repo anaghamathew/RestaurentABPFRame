@@ -12,5 +12,6 @@ namespace RestaurentProject.Categories
   public  interface ICategoryAppService: IAsyncCrudAppService<CategoryDto>
     {
         ListResultDto<CategoryDto> GetWithoutPagination();
+        List<CategoryWithDto> GetCategorywithFoods();
     }
 }

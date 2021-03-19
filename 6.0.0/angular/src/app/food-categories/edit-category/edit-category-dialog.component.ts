@@ -14,7 +14,7 @@ import {
   } from '@shared/service-proxies/service-proxies';
   
   @Component({
-    templateUrl: 'edit-category-dialog-component.html'
+    templateUrl: 'edit-category-dialog.component.html'
   })
   export class EditCategoryDialogComponent extends AppComponentBase
     implements OnInit {

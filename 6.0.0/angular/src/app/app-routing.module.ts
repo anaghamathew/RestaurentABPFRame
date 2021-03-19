@@ -10,7 +10,7 @@ import { RolesComponent } from 'app/roles/roles.component';
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { FoodCategoriesComponent } from './food-categories/food-categories.component';
 import { FoodItemsComponent } from './food-items/food-items.component';
-
+import {PurchaseFoodComponent} from './purchase-food/purchase-food.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -24,8 +24,9 @@ import { FoodItemsComponent } from './food-items/food-items.component';
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'about', component: AboutComponent },
                     { path: 'update-password', component: ChangePasswordComponent },
-                     { path: 'food-categories', component: FoodCategoriesComponent},
-                     {path:'food-items',component:FoodItemsComponent}
+                     { path: 'food-categories', component: FoodCategoriesComponent,data:{permission:'Pages.Owners'}, canActivate: [AppRouteGuard]},
+                     {path:'food-items',component:FoodItemsComponent,data:{permission:'Pages.Owners'}, canActivate: [AppRouteGuard]},
+                     { path: 'purchase-food', component:PurchaseFoodComponent,data:{permission:'Pages.Owners'}, canActivate: [AppRouteGuard]}
                     // {path:'categories-list',
                     //     children :[
                     //         {path:'**',redirectTo:'list',pathMatch:'full'},

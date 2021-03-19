@@ -10,46 +10,52 @@ import {
   import { AppComponentBase } from '@shared/app-component-base';
   import {
     FoodServiceProxy,
-    CreateFoodInputDto,
-    CategoryDto,
-    CategoryServiceProxy,
-    CategoryDtoListResultDto
+  FoodListDto,CreateFoodInputDto, CategoryServiceProxy,
+  CategoryDto,
+  CategoryDtoListResultDto
   } from '@shared/service-proxies/service-proxies';
   
   @Component({
-    templateUrl: 'create-food-dialog.component.html'
+    templateUrl: 'edit-food-dialog.component.html'
   })
-  export class CreateFoodDialogComponent extends AppComponentBase
+  export class EditFoodDialogComponent extends AppComponentBase
     implements OnInit {
     saving = false;
-    food: CreateFoodInputDto = new CreateFoodInputDto();
+     food: CreateFoodInputDto = new CreateFoodInputDto();
+    id: number;
     categories:CategoryDto[]=[];
-  
     @Output() onSave = new EventEmitter<any>();
   
     constructor(
       injector: Injector,
       public _foodService: FoodServiceProxy,
       public bsModalRef: BsModalRef,
-      public _categoryService: CategoryServiceProxy
+      public _categoryService:CategoryServiceProxy
     ) {
       super(injector);
     }
   
     ngOnInit(): void {
-      
-      this._categoryService.getWithoutPagination().subscribe((result: CategoryDtoListResultDto) => {
-        this.categories = result.items;
-        console.log("categoriesss", this.categories);
-        
-      });
-    }
+        this._categoryService.getWithoutPagination().subscribe((result: CategoryDtoListResultDto) => {
+             this.categories = result.items;
+            
+          });
+        this._foodService.getFood(this.id).subscribe((result: FoodListDto) => {
+          // this.food = result;
+          this.food.id=result.id;
+          this.food.name=result.name;
+          this.food.description=result.description;
+          this.food.categoryId=result.categoryId;
+          this.food.price=result.price;
+          this.food.quantity=result.quantity;
+        });
+      }
   
     save(): void {
       this.saving = true;
   
       this._foodService
-        .createFood(this.food)
+        .updateFood(this.food)
         .pipe(
           finalize(() => {
             this.saving = false;

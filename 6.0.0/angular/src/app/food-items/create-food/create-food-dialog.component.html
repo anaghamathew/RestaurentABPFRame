@@ -138,7 +138,7 @@
   (ngSubmit)="save()"
 >
   <abp-modal-header
-    [title]="'CreateNewCategory' | localize"
+    [title]="'CreateNewFood' | localize"
     (onCloseClick)="bsModalRef.hide()"
   ></abp-modal-header>
   <div class="modal-body">
@@ -198,12 +198,59 @@
           id="categoryName" [(ngModel)]="food.categoryId" 
           #categoryNameModel="ngModel">
           <option disabled>Select Category</option>
-          <option *ngFor="let category of categories" [ngValue]="category.name">{{category.Name}}</option>
+          <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
                    
       </select>
+      
         <abp-validation-summary
           [control]="categoryNameModel"
           
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="price">
+        {{ "Price" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="price"
+          id="price"
+          maxlength="128"
+          required
+          [(ngModel)]="food.price"
+          #priceModel="ngModel"
+          #priceEl
+        />
+        <abp-validation-summary
+          [control]="priceModel"
+          [controlEl]="priceEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="quantity">
+        {{ "Quantity" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="quantity"
+          id="quantity"
+          maxlength="128"
+          required
+          [(ngModel)]="food.quantity"
+          #quantityModel="ngModel"
+          #quantityEl
+        />
+        <abp-validation-summary
+          [control]="quantityModel"
+          [controlEl]="quantityEl"
         ></abp-validation-summary>
       </div>
     </div>

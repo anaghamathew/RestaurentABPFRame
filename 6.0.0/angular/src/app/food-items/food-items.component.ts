@@ -3,7 +3,7 @@ import { finalize } from 'rxjs/operators';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import {CreateFoodDialogComponent} from './create-food/create-food-dialog.component';
-
+import {EditFoodDialogComponent} from './edit-food/edit-food-dialog.component';
 import {
   PagedListingComponentBase,
   PagedRequestDto,
@@ -65,9 +65,9 @@ export class FoodItemsComponent extends PagedListingComponentBase<FoodListDto> {
         this.showCreateOrEditFoodDialog();
      }
    
-    //  editCategory(category: CategoryDto): void {
-    //     this.showCreateOrEditCategoryDialog(category.id);
-    //  }
+     editFood(food: FoodListDto): void {
+        this.showCreateOrEditFoodDialog(food.id);
+     }
     showCreateOrEditFoodDialog(id?: number): void {
        let createOrEditFoodDialog: BsModalRef;
        if (!id) {
@@ -78,15 +78,15 @@ export class FoodItemsComponent extends PagedListingComponentBase<FoodListDto> {
            }
          );
        } else {
-        //  createOrEditCategoryDialog = this._modalService.show(
-        //    EditCategoryDialogComponent,
-        //    {
-        //      class: 'modal-lg',
-        //      initialState: {
-        //        id: id,
-        //      },
-        //    }
-        //  );
+        createOrEditFoodDialog = this._modalService.show(
+          EditFoodDialogComponent,
+           {
+             class: 'modal-lg',
+             initialState: {
+               id: id,
+             },
+           }
+         );
        }
    
        createOrEditFoodDialog.content.onSave.subscribe(() => {
@@ -96,23 +96,23 @@ export class FoodItemsComponent extends PagedListingComponentBase<FoodListDto> {
       
 
       delete(food: FoodListDto): void {
-        // abp.message.confirm(
-        //   this.l('CategoryDeleteWarningMessage', category.name),
-        //   undefined,
-        //   (result: boolean) => {
-        //     if (result) {
-        //       this._foodService
-        //         .delete(food.id)
-        //         .pipe(
-        //           finalize(() => {
-        //             abp.notify.success(this.l('SuccessfullyDeleted'));
-        //             this.refresh();
-        //           })
-        //         )
-        //         .subscribe(() => {});
-        //     }
-        //   }
-        // );
+        abp.message.confirm(
+          this.l('Food Item Delete Warning Message', food.name),
+          undefined,
+          (result: boolean) => {
+            if (result) {
+              this._foodService
+                .delete(food.id)
+                .pipe(
+                  finalize(() => {
+                    abp.notify.success(this.l('SuccessfullyDeleted'));
+                    this.refresh();
+                  })
+                )
+                .subscribe(() => {});
+            }
+          }
+        );
       }
   // ngOnInit(): void {
   // }
