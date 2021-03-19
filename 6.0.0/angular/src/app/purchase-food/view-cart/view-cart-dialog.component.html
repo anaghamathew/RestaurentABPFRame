@@ -1,0 +1,40 @@
+<section>
+    <div class="spacer">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-lg-9">
+            <div class="row shop-listing">
+              <table class="table shop-table" *ngIf="cartItems">
+                <tr>
+                  <th class="b-0">Name</th>
+                  <th class="b-0">Pricein Rs.</th>
+                  <th class="b-0">Quantity</th>
+                  
+                </tr>
+                <tr *ngFor="let item of cartItems">
+                  <td>{{item.foodName}}</td>
+                  <td>{{item.price}}</td>
+                  <td>
+                     <button class="btn btn-primary btn-sm" (click)="IncreamentQTY(item.id,1)">+</button> 
+                    {{ item.quantity }}
+                    <button class="btn btn-primary btn-sm" (click)="DecreamentQTY(item.id,1)">-</button>
+                  </td>
+                 
+                </tr>
+                <tr>
+                  <td colspan="3" align="right">Total:{{totalPrice}} Rs.</td>
+                  <td colspan="4" align="right">
+                    <button class="btn btn-danger" (click)="EmptyCart()">Empty Cart</button>
+                    
+                  </td>
+                  <td colspan="4" align="right">
+                      <button class="btn btn-primary" (click)="ConfirmItems()">Confirm</button>
+                    </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

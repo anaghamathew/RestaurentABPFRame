@@ -9,6 +9,8 @@
 
         public const string Pages_Roles = "Pages.Roles";
         public const string Pages_Owners = "Pages.Owners";
-        
+        public const string Pages_Customers = "Pages.Customers";
+
+
     }
 }

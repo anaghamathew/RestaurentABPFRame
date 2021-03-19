@@ -22,7 +22,7 @@ namespace RestaurentProject.PurchaseOrders
         }
         public async Task AddToCart(AddCartInput addCartInput)
         {
-            var exisingFood = await _purchaseOrderRepository.FirstOrDefaultAsync(m => m.FoodId == addCartInput.FoodId);
+            var exisingFood = await _purchaseOrderRepository.FirstOrDefaultAsync(m =>( m.FoodId == addCartInput.FoodId) && (m.Customer==addCartInput.Customer) && (m.Status=="InCart"));
 
             if (exisingFood != null)
             {
@@ -51,11 +51,12 @@ namespace RestaurentProject.PurchaseOrders
                 .GetAllIncluding(f => f.PurchasedFood)
             .WhereIf(
                !String.IsNullOrEmpty(Customer),
-                p => p.Customer== Customer
-            ).Where(p=>p.Status== "InCart");
+                p => p.Customer==Customer
+            )
+            .Where(p=>p.Status=="InCart");
 
           var orders=  foodQuery.ToList();
-
+            Console.WriteLine("orders" + orders);
             var purchaseOrderDto = ObjectMapper.Map<List<PurchaseOrderDto>>(orders);
 
             return new ListResultDto<PurchaseOrderDto>(purchaseOrderDto);
@@ -78,5 +79,66 @@ namespace RestaurentProject.PurchaseOrders
                      select (int?)items.Quantity * items.PurchasedFood.Price).Sum();
             return (decimal)total;
         }
+        public async Task IncrementQuantity(int ItemId)
+        {
+            var exisingFood = await _purchaseOrderRepository.FirstOrDefaultAsync(m => m.Id == ItemId);
+            if (exisingFood != null)
+            {
+                exisingFood.Quantity++;
+                _purchaseOrderRepository.Update(exisingFood);
+            }
+        }
+
+        public async Task DecrementQuantity(int ItemId)
+        {
+            var exisingFood = await _purchaseOrderRepository.FirstOrDefaultAsync(m => m.Id == ItemId);
+            if (exisingFood != null)
+            {
+                if (exisingFood.Quantity > 1)
+                {
+                    exisingFood.Quantity--;
+
+                   await _purchaseOrderRepository.UpdateAsync(exisingFood);
+                }
+                else
+                {
+                   await _purchaseOrderRepository.DeleteAsync(exisingFood);
+                }
+                    
+            }
+        }
+        public async Task EmptyCart(string Customer)
+        {
+            var foodQuery =  _purchaseOrderRepository
+                .GetAllIncluding(f => f.PurchasedFood)
+            .WhereIf(
+               !String.IsNullOrEmpty(Customer),
+                p => p.Customer == Customer
+            ).Where(p => p.Status == "InCart");
+
+            var orders = foodQuery.ToList();
+            foreach (var item in orders)
+            {
+               await  _purchaseOrderRepository.DeleteAsync(item);
+            }
+               
+        }
+        public async Task ConfirmPurchase(string Customer)
+        {
+            var foodQuery = _purchaseOrderRepository
+               .GetAllIncluding(f => f.PurchasedFood)
+           .WhereIf(
+              !String.IsNullOrEmpty(Customer),
+               p => p.Customer == Customer
+           ).Where(p => p.Status == "InCart");
+
+            var orders = foodQuery.ToList();
+            foreach (var item in orders)
+            {
+                item.Status = "Purchased";
+                await _purchaseOrderRepository.UpdateAsync(item);
+            }
+        }
+
     }
 }

@@ -46,7 +46,7 @@ import {CreateFoodDialogComponent} from './food-items/create-food/create-food-di
 import {EditFoodDialogComponent} from './food-items/edit-food/edit-food-dialog.component';
 
 import { PurchaseFoodComponent } from './purchase-food/purchase-food.component';
-
+import {ViewCartDialogComponent} from './purchase-food/view-cart/view-cart-dialog.component';
 
 
 @NgModule({
@@ -86,7 +86,8 @@ import { PurchaseFoodComponent } from './purchase-food/purchase-food.component';
     CreateFoodDialogComponent,
     EditFoodDialogComponent,
     
-    PurchaseFoodComponent
+    PurchaseFoodComponent,
+    ViewCartDialogComponent
     
    
    
@@ -124,7 +125,8 @@ import { PurchaseFoodComponent } from './purchase-food/purchase-food.component';
     CreateCategoryDialogComponent,
     EditCategoryDialogComponent,
     CreateFoodDialogComponent,
-    EditFoodDialogComponent
+    EditFoodDialogComponent,
+    ViewCartDialogComponent
   ],
 })
 export class AppModule {}

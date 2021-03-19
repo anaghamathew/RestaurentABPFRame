@@ -1,4 +1,20 @@
 <div [@routerTransition]>
+
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6">
+          <h1>{{ "Food Items" | localize }}</h1>
+        </div>
+        <div class="col-6 text-right">
+          <a href="javascript:;" class="btn bg-blue" (click)="ViewCart()">
+            <i class="fa fa-shopping-cart"></i>
+            {{ "View Cart" | localize }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
     <section class="content-header" *ngFor="
     let product of products">
       <div class="container-fluid">
@@ -11,7 +27,7 @@ let food of product.foods" style="width: 300px;float:left;height:200px;margin:20
       <p class="card-text">{{food.description}}</p>
       <p class="card-text">{{food.price}} Rs.</p>
       <a href="javascript:;" class="btn bg-blue" (click)="addToCart(food.id)">
-        <i class="fa fa-plus-square"></i>
+        <i class="fa fa-cart-plus"></i>
         {{ "Add to Cart" | localize }}
       </a>
      

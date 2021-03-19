@@ -26,7 +26,7 @@ import {PurchaseFoodComponent} from './purchase-food/purchase-food.component';
                     { path: 'update-password', component: ChangePasswordComponent },
                      { path: 'food-categories', component: FoodCategoriesComponent,data:{permission:'Pages.Owners'}, canActivate: [AppRouteGuard]},
                      {path:'food-items',component:FoodItemsComponent,data:{permission:'Pages.Owners'}, canActivate: [AppRouteGuard]},
-                     { path: 'purchase-food', component:PurchaseFoodComponent,data:{permission:'Pages.Owners'}, canActivate: [AppRouteGuard]}
+                     { path: 'purchase-food', component:PurchaseFoodComponent,data:{permission:'Pages.Customers'}, canActivate: [AppRouteGuard]}
                     // {path:'categories-list',
                     //     children :[
                     //         {path:'**',redirectTo:'list',pathMatch:'full'},
